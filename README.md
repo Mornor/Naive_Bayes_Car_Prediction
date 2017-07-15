@@ -11,16 +11,17 @@ By using raw provided data, I was able to predict on which maneuvers the vehicle
 
 ### Dataset
 The dataset is composed on several samples representing the current state of the vehicle. The vehicle is represented using the Frenet coordinates, as represented below: 
-![frenet_coordinates](./images/freenet.png)
+![frenet_coordinates](./images/freenet.png) 
+
 Each coordinate contains 4 pieces of information:
- * s
- * d
-​ * s dot (derivative from s)
-​ * d dot (derivative from d)
+* s
+* d
+​* s dot (derivative from s)
+​* d dot (derivative from d)
 ​​
 ### Goal
 Based on these coordinates, predict on which maneuver the vehicle is engaged, as shown by the picture below
 ![goal](./images/goal.png)
- * 1. Change lanes left (shown in blue)
- * 2. Keep lane (shown in black)
- * 3. Change lanes right (shown in red)
+* Change lanes left (shown in blue)
+* Keep lane (shown in black)
+* Change lanes right (shown in red)
