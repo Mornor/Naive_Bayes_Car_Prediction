@@ -1,5 +1,5 @@
-from keras.models import Sequential
-from keras.layers import Dense
+from sklearn.naive_bayes import GaussianNB
+import numpy as np
 
 class GNB(object):
 
@@ -22,9 +22,12 @@ class GNB(object):
 		labels - array of N labels
 		  - Each label is one of "left", "keep", or "right".
 		"""
-		pass
 
-	def predict(self, observation):
+		classifier = GaussianNB()
+		classifier.fit(data, labels)
+		return classifier
+
+	def predict(self, observation, classifier):
 		"""
 		Once trained, this method is called and expected to return 
 		a predicted behavior for the given observation.
@@ -39,5 +42,8 @@ class GNB(object):
 		A label representing the best guess of the classifier. Can
 		be one of "left", "keep" or "right".
 		"""
-		# TODO - complete this
-		return self.possible_labels[1]
+		# Reshape data
+		observation = np.array(observation)
+		observation = observation.reshape(1, -1)
+		
+		return classifier.predict(observation)

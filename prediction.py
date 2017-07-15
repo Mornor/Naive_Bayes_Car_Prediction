@@ -7,13 +7,10 @@ def main():
 	gnb = GNB()
 	with open('train.json', 'r') as f:
 		j = json.load(f)
-	for key, value in j.items():
-		print("Key: ")
-		print(key)
 
 	X = j['states']
 	Y = j['labels']
-	gnb.train(X, Y)
+	clf = gnb.train(X, Y)
 
 	with open('test.json', 'r') as f:
 		j = json.load(f)
@@ -22,7 +19,7 @@ def main():
 	Y = j['labels']
 	score = 0
 	for coords, label in zip(X,Y):
-		predicted = gnb.predict(coords)
+		predicted = gnb.predict(coords, clf)
 		if predicted == label:
 			score += 1
 	fraction_correct = float(score) / len(X)
